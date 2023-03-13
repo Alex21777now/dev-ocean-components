@@ -13,6 +13,7 @@ table {
 border-spacing: 0;
 border: 1px solid black;
 
+
 tr {
  :last-child {
    td {
@@ -32,6 +33,12 @@ td {
    border-right: 0;
  }
 }
+}
+
+form {
+  border-spacing: 0;
+  border: 1px solid gray;
+  background-color: lightgray;
 }
 `
 
@@ -54,12 +61,211 @@ function App() {
         </header>
       </div>
     );  */
+    
     return (
       
         <div className="App">
-          ТОШО НАДО
+         {/* ТОШО НАДО*/}
+         *
           {console.log(UsersData)}
-          
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <h3><strong>Users</strong></h3>
+      {/*<button onClick={() => props.addSlide()}>add slide</button>*/}
+    
+      <div>
+
+      <Styles>
+      {/*<table style={{ allign: 'center', display: 'inline-block' }}>*/}
+
+
+
+<table class="table table-striped">
+
+<thead>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Type</th>
+    <th>When</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>1</td>
+    <td>Mark</td>
+    <td>Otto</td>
+    <td>@mdo</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Jacob</td>
+    <td>Thornton</td>
+    <td>@fat</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Larry</td>
+    <td>Bird</td>
+    <td>@twitter</td>
+  </tr>
+</tbody>
+
+</table>
+
+
+
+<table class="table table-striped">
+
+<thead>
+  <tr>
+    <th></th>
+    <th>FirstName</th>
+    <th>LastName</th>
+    <th>MaidenName</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Username</th>
+    <th>Password</th>
+    <th>BirthDate</th>
+    <th>Image</th>
+    <th>BloodGroup</th>
+    <th>Height</th>
+    <th>Weight</th>
+    <th>EyeColor</th>
+    <th>Hair</th>
+    <th>Domain</th>
+    <th>ip</th>
+    <th>Address</th>
+    <th>MacAddress</th>
+    <th>University</th>
+    <th>Bank</th>
+    <th>Company</th>
+    <th>ein</th>
+    <th>ssn</th>
+    <th>UserAgent</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>1</td>
+    <td>{UsersData.users[0].firstName}</td>
+    <td>Otto</td>
+    <td>@mdo</td>
+  </tr>
+</tbody>
+
+
+{/*
+<tbody>
+{
+  
+UsersData.users.map(dat1 => (
+      
+  <tr key={dat1.id}>
+     console.log(UsersData.dat1.firstName);
+      <td>{dat1.id}</td>
+      <td>{dat1.firstName}</td>
+      <td>{dat1.lastName}</td>
+      <td>{dat1.maidenName}</td>
+      <td>{dat1.age}</td>
+      <td>{dat1.gender}</td>
+      <td>{dat1.email}</td>
+      <td>{dat1.phone}</td>
+      <td>{dat1.username}</td>
+      <td>{dat1.password}</td>
+      <td>{dat1.birthDate}</td>
+      <td>{dat1.image}</td>
+      <td>{dat1.bloodGroup}</td>
+      <td>{dat1.height}</td>
+      <td>{dat1.weight}</td>
+      <td>{dat1.eyeColor}</td>
+      <td>{dat1.hair}</td>
+      <td>{dat1.domain}</td>
+      <td>{dat1.ip}</td>
+      <td>{dat1.address}</td>
+      <td>{dat1.macAddress}</td>
+      <td>{dat1.university}</td>
+      <td>{dat1.bank}</td>
+      <td>{dat1.company}</td>
+      <td>{dat1.ein}</td>
+      <td>{dat1.ssn}</td>
+      <td>{dat1.userAgent}</td>
+
+      </tr>       
+ ))
+ 
+}
+</tbody>    */}
+
+</table>
+
+
+
+      </Styles>
+
+        <p>&nbsp;</p>
+        <br/><br/>
+      </div>
+
+
+      {/*<h3>Form <br/><br/>(edit a <strong>User</strong>)</h3>*/}
+      <Styles>
+      <form class="row g-3">
+      <h3><strong>Form</strong><br/><br/>(edit a <strong>User</strong>)</h3>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4"/>
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4"/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" class="form-control" id="inputCity"/>
+  </div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">Zip</label>
+    <input type="text" class="form-control" id="inputZip"/>
+  </div>
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck"/>
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">UPDATE a User</button>
+    <p></p>
+  </div>
+</form>
+</Styles>     
+
+
         </div>
   
     );
