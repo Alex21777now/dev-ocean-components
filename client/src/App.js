@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import UsersData from './UsersData';
+import users from './Users';
+import products from './Products';
 import {BootstrapTable,
   TableHeaderColumn} from 'react-bootstrap-table';
 import Table from 'react-table';
@@ -38,7 +40,7 @@ td {
 form {
   border-spacing: 0;
   border: 1px solid gray;
-  background-color: lightgray;
+  background-color: lightgreen;
 }
 `
 
@@ -63,16 +65,16 @@ function App() {
     );  */
     
     return (
-      
+        <>
         <div className="App">
          {/* ТОШО НАДО*/}
          *
-          {console.log(UsersData)}
+          {console.log(products)}
           <br/>
           <br/>
           <br/>
           <br/>
-          <h3><strong>Users</strong></h3>
+          <h3><strong>Products</strong></h3>
       {/*<button onClick={() => props.addSlide()}>add slide</button>*/}
     
       <div>
@@ -82,7 +84,7 @@ function App() {
 
 
 
-<table class="table table-striped">
+{/*<table class="table table-striped">
 
 <thead>
   <tr>
@@ -114,11 +116,11 @@ function App() {
   </tr>
 </tbody>
 
-</table>
+</table> */}
 
 
 
-<table class="table table-striped">
+{/*<table class="table table-striped">
 
 <thead>
   <tr>
@@ -150,26 +152,18 @@ function App() {
     <th>ssn</th>
     <th>UserAgent</th>
   </tr>
+ 
 </thead>
 
-<tbody>
-  <tr>
-    <td>1</td>
-    <td>{UsersData.users[0].firstName}</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-</tbody>
 
 
-{/*
 <tbody>
-{
-  
-UsersData.users.map(dat1 => (
+
+{ 
+users.map(dat1 => (
       
   <tr key={dat1.id}>
-     console.log(UsersData.dat1.firstName);
+
       <td>{dat1.id}</td>
       <td>{dat1.firstName}</td>
       <td>{dat1.lastName}</td>
@@ -200,12 +194,59 @@ UsersData.users.map(dat1 => (
 
       </tr>       
  ))
- 
+
 }
-</tbody>    */}
+</tbody>    
+
+</table> */}
+
+
+<table class="table table-striped">
+
+<thead>
+  <tr>
+    <th></th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>DiscountPercentage</th>
+    <th>Rating</th>
+    <th>Stock</th>
+    <th>Brand</th>
+    <th>Category</th>
+    <th>Thumbnail</th>
+    
+  </tr>
+ 
+</thead>
+
+
+
+<tbody>
+
+{ 
+products.map(dat1 => (
+      
+  <tr key={dat1.id}>
+
+      <td>{dat1.id}</td>
+      <td>{dat1.title}</td>
+      <td>{dat1.description}</td>
+      <td>{dat1.price}</td>
+      <td>{dat1.discountPercentage}</td>
+      <td>{dat1.rating}</td>
+      <td>{dat1.stock}</td>
+      <td>{dat1.brand}</td>
+      <td>{dat1.category}</td>
+      <td>{dat1.thumbnail}</td>
+
+      </tr>       
+ ))
+
+}
+</tbody>    
 
 </table>
-
 
 
       </Styles>
@@ -218,7 +259,7 @@ UsersData.users.map(dat1 => (
       {/*<h3>Form <br/><br/>(edit a <strong>User</strong>)</h3>*/}
       <Styles>
       <form class="row g-3">
-      <h3><strong>Form</strong><br/><br/>(edit a <strong>User</strong>)</h3>
+      <h3><strong>Form</strong><br/><br/>(edit a <strong>Product</strong>)</h3>
   <div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
     <input type="email" class="form-control" id="inputEmail4"/>
@@ -259,7 +300,7 @@ UsersData.users.map(dat1 => (
     </div>
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">UPDATE a User</button>
+    <button type="submit" class="btn btn-primary">UPDATE a Product</button>
     <p></p>
   </div>
 </form>
@@ -267,7 +308,7 @@ UsersData.users.map(dat1 => (
 
 
         </div>
-  
+        </>
     );
     }
   
