@@ -1,6 +1,6 @@
 import React from "react";
 
-const products = 
+const mockProductsVar = 
 [
   {
       "id": 1,
@@ -396,5 +396,5 @@ const products =
 
   
 
-  export default products;
+  export default mockProductsVar;
 

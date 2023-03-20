@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
 import UsersData from './UsersData';
@@ -7,6 +8,7 @@ import {BootstrapTable,
   TableHeaderColumn} from 'react-bootstrap-table';
 import Table from 'react-table';
 import styled from 'styled-components';
+import mockProductsVar from "./Products";
 
 const Styles = styled.div`
 padding: 1rem;
@@ -45,162 +47,135 @@ form {
 `
 
 function App() {
-  /*  return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );  */
+ 
     
+    const [productsVar, setProductsVar] = useState (mockProductsVar);
+    const [productToEdit, setProductToEdit] = useState (null);
+
+
+    const handleProductTitleChange = (title) => {
+      setProductToEdit({ ...productToEdit, title });
+    }
+    const handleProductDescriptionChange = (description) => {
+      setProductToEdit({ ...productToEdit, description });
+    }
+    const handleProductPriceChange = (price) => {
+      setProductToEdit({ ...productToEdit, price });
+    }
+    const handleProductDiscountPercentageChange = (discountPercentage) => {
+      setProductToEdit({ ...productToEdit, discountPercentage });
+    }
+    const handleProductRatingChange = (rating) => {
+      setProductToEdit({ ...productToEdit, rating });
+    }
+    const handleProductStockChange = (stock) => {
+      setProductToEdit({ ...productToEdit, stock });
+    }
+    const handleProductBrandChange = (brand) => {
+      setProductToEdit({ ...productToEdit, brand });
+    }
+    const handleProductCategoryChange = (category) => {
+      setProductToEdit({ ...productToEdit, category });
+    }
+    const handleProductThumbnailChange = (thumbnail) => {
+      setProductToEdit({ ...productToEdit, thumbnail });
+    }
+
+    
+    const handleUpdate = () => {
+      const updatedProductsVar = productsVar.map(dat1 => {
+        if(dat1.id === productToEdit.id) {
+          return productToEdit;
+        }
+        return dat1;
+      })
+
+      setProductsVar(updatedProductsVar);
+      setProductToEdit(null);
+    }
+
+
     return (
-        <>
+        <div className="products-page">
+        { productToEdit && (
+
+
+<Styles>
+      <form class="row g-3">
+      <h3><strong>Form</strong><br/><br/>(edit a <strong>Product</strong>)</h3>
+  <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Title</label>
+    <input type="email" class="form-control" id="inputEmail4" placeholder={productToEdit.title} value={productToEdit.title} onChange={(e) => handleProductTitleChange(e.target.value)}/>
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Description</label>
+    <input type="text" class="form-control" id="inputPassword4" placeholder={productToEdit.description} value={productToEdit.description} onChange={(e) => handleProductDescriptionChange(e.target.value)}/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Price</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder={productToEdit.price} value={productToEdit.price} onChange={(e) => handleProductPriceChange(e.target.value)}/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">DiscountPercentage</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder={productToEdit.discountPercentage} value={productToEdit.discountPercentage} onChange={(e) => handleProductDiscountPercentageChange(e.target.value)}/>
+  </div>
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">Rating</label>
+    <input type="text" class="form-control" id="inputCity" placeholder={productToEdit.rating} value={productToEdit.rating} onChange={(e) => handleProductRatingChange(e.target.value)}/>
+  </div>
+  <p></p>
+ 
+<div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Stock</label>
+    <input type="email" class="form-control" id="inputEmail4" placeholder={productToEdit.stock} value={productToEdit.stock} onChange={(e) => handleProductStockChange(e.target.value)}/>
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Brand</label>
+    <input type="text" class="form-control" id="inputPassword4" placeholder={productToEdit.brand} value={productToEdit.brand} onChange={(e) => handleProductBrandChange(e.target.value)}/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Category</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder={productToEdit.category} value={productToEdit.category} onChange={(e) => handleProductCategoryChange(e.target.value)}/>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress2" class="form-label">Thumbnail</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder={productToEdit.thumbnail} value={productToEdit.thumbnail} onChange={(e) => handleProductThumbnailChange(e.target.value)}/>
+  </div>
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck"/>
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" onClick={() => handleUpdate()}>UPDATE a Product</button>    <button class="btn btn-outline-danger" onClick={()=> setProductToEdit(null)}>Cancel</button>
+    <p></p>
+  </div>
+</form>
+</Styles>  
+
+
+
+ )}
         <div className="App">
-         {/* ТОШО НАДО*/}
-         *
-          {console.log(products)}
+     
+       
           <br/>
           <br/>
           <br/>
           <br/>
           <h3><strong>Products</strong></h3>
-      {/*<button onClick={() => props.addSlide()}>add slide</button>*/}
+      
     
       <div>
 
-      <Styles>
-      {/*<table style={{ allign: 'center', display: 'inline-block' }}>*/}
 
 
-
-{/*<table class="table table-striped">
-
-<thead>
-  <tr>
-    <th></th>
-    <th>Title</th>
-    <th>Type</th>
-    <th>When</th>
-  </tr>
-</thead>
-
-<tbody>
-  <tr>
-    <td>1</td>
-    <td>Mark</td>
-    <td>Otto</td>
-    <td>@mdo</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>Jacob</td>
-    <td>Thornton</td>
-    <td>@fat</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>Larry</td>
-    <td>Bird</td>
-    <td>@twitter</td>
-  </tr>
-</tbody>
-
-</table> */}
-
-
-
-{/*<table class="table table-striped">
-
-<thead>
-  <tr>
-    <th></th>
-    <th>FirstName</th>
-    <th>LastName</th>
-    <th>MaidenName</th>
-    <th>Age</th>
-    <th>Gender</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th>BirthDate</th>
-    <th>Image</th>
-    <th>BloodGroup</th>
-    <th>Height</th>
-    <th>Weight</th>
-    <th>EyeColor</th>
-    <th>Hair</th>
-    <th>Domain</th>
-    <th>ip</th>
-    <th>Address</th>
-    <th>MacAddress</th>
-    <th>University</th>
-    <th>Bank</th>
-    <th>Company</th>
-    <th>ein</th>
-    <th>ssn</th>
-    <th>UserAgent</th>
-  </tr>
- 
-</thead>
-
-
-
-<tbody>
-
-{ 
-users.map(dat1 => (
+<Styles>
       
-  <tr key={dat1.id}>
-
-      <td>{dat1.id}</td>
-      <td>{dat1.firstName}</td>
-      <td>{dat1.lastName}</td>
-      <td>{dat1.maidenName}</td>
-      <td>{dat1.age}</td>
-      <td>{dat1.gender}</td>
-      <td>{dat1.email}</td>
-      <td>{dat1.phone}</td>
-      <td>{dat1.username}</td>
-      <td>{dat1.password}</td>
-      <td>{dat1.birthDate}</td>
-      <td>{dat1.image}</td>
-      <td>{dat1.bloodGroup}</td>
-      <td>{dat1.height}</td>
-      <td>{dat1.weight}</td>
-      <td>{dat1.eyeColor}</td>
-      <td>{dat1.hair}</td>
-      <td>{dat1.domain}</td>
-      <td>{dat1.ip}</td>
-      <td>{dat1.address}</td>
-      <td>{dat1.macAddress}</td>
-      <td>{dat1.university}</td>
-      <td>{dat1.bank}</td>
-      <td>{dat1.company}</td>
-      <td>{dat1.ein}</td>
-      <td>{dat1.ssn}</td>
-      <td>{dat1.userAgent}</td>
-
-      </tr>       
- ))
-
-}
-</tbody>    
-
-</table> */}
-
-
 <table class="table table-striped">
 
 <thead>
@@ -215,7 +190,7 @@ users.map(dat1 => (
     <th>Brand</th>
     <th>Category</th>
     <th>Thumbnail</th>
-    
+    <th></th>
   </tr>
  
 </thead>
@@ -225,7 +200,7 @@ users.map(dat1 => (
 <tbody>
 
 { 
-products.map(dat1 => (
+productsVar.map(dat1 => (
       
   <tr key={dat1.id}>
 
@@ -239,6 +214,7 @@ products.map(dat1 => (
       <td>{dat1.brand}</td>
       <td>{dat1.category}</td>
       <td>{dat1.thumbnail}</td>
+      <td><button onClick={() => setProductToEdit(dat1)}><strong>Edit</strong></button></td>
 
       </tr>       
  ))
@@ -249,66 +225,12 @@ products.map(dat1 => (
 </table>
 
 
-      </Styles>
+</Styles>
 
-        <p>&nbsp;</p>
-        <br/><br/>
       </div>
 
-
-      {/*<h3>Form <br/><br/>(edit a <strong>User</strong>)</h3>*/}
-      <Styles>
-      <form class="row g-3">
-      <h3><strong>Form</strong><br/><br/>(edit a <strong>Product</strong>)</h3>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4"/>
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4"/>
-  </div>
-  <div class="col-12">
-    <label for="inputAddress" class="form-label">Address</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"/>
-  </div>
-  <div class="col-12">
-    <label for="inputAddress2" class="form-label">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
-  </div>
-  <div class="col-md-6">
-    <label for="inputCity" class="form-label">City</label>
-    <input type="text" class="form-control" id="inputCity"/>
-  </div>
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">State</label>
-    <select id="inputState" class="form-select">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
-  </div>
-  <div class="col-md-2">
-    <label for="inputZip" class="form-label">Zip</label>
-    <input type="text" class="form-control" id="inputZip"/>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck"/>
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">UPDATE a Product</button>
-    <p></p>
-  </div>
-</form>
-</Styles>     
-
-
-        </div>
-        </>
+      </div>
+      </div>
     );
     }
   
